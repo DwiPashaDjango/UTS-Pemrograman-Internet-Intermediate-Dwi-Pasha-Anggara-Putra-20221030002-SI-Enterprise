@@ -1,5 +1,10 @@
 <?php
 
+use App\Http\Controllers\BerandaController;
+use App\Http\Controllers\BlogController;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +18,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [BerandaController::class, 'index'])->name('beranda');
+Route::get('/product', [ProductController::class, 'index'])->name('product');
+Route::get('/product/show', [ProductController::class, 'show'])->name('product.show');
+Route::get('/blogs', [BlogController::class, 'index'])->name('blogs');
+Route::get('/blogs/show', [BlogController::class, 'show'])->name('blogs.show');
+Route::get('/contacts', [ContactController::class, 'index'])->name('contacts');
+Route::get('/carts', [CartController::class, 'index'])->name('carts');
